@@ -10,7 +10,20 @@ import UIKit
 
 class LoginView: UIView
 {
-    let ericktextfield = UITextField()
+     let usernametextfield = UITextField()
+     let passwordtextfield = UITextField()
+     let stackView = UIStackView()
+    
+    
+     let divider: UIView =
+    {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+   
     
     
     override init(frame: CGRect) {
@@ -24,10 +37,10 @@ class LoginView: UIView
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var intrinsicContentSize: CGSize
-    {
-        return CGSize(width: 200, height: 200)
-    }
+//    override var intrinsicContentSize: CGSize
+//    {
+//        return CGSize(width: 200, height: 200)
+//    }
 }
 
 extension LoginView
@@ -35,21 +48,51 @@ extension LoginView
     private func style()
     {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .systemBlue
-        ericktextfield.translatesAutoresizingMaskIntoConstraints = false
-        ericktextfield.placeholder = "Username"
-        ericktextfield.delegate = self
-        ericktextfield.textColor = .white
-        ericktextfield.font = UIFont.systemFont(ofSize: 14)
+        self.backgroundColor = .secondarySystemBackground
+        
+        usernametextfield.translatesAutoresizingMaskIntoConstraints = false
+        usernametextfield.placeholder = "Username"
+        usernametextfield.delegate = self
+        usernametextfield.textColor = .darkGray
+        usernametextfield.font = UIFont.systemFont(ofSize: 16)
+        
+        
+        //Password textfield
+        passwordtextfield.translatesAutoresizingMaskIntoConstraints = false
+        passwordtextfield.placeholder = "Password"
+        passwordtextfield.delegate = self
+        passwordtextfield.textColor = .darkGray
+        passwordtextfield.font = UIFont.systemFont(ofSize: 16)
+        passwordtextfield.isSecureTextEntry = true
+        
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Stackview
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        
+        self.layer.cornerRadius = 5
+        self.clipsToBounds = true
+       
         
     }
     
     private func layout()
     {
-        self.addSubview(ericktextfield)
+        stackView.addArrangedSubview(usernametextfield)
+        stackView.addArrangedSubview(divider)
+        stackView.addArrangedSubview(passwordtextfield)
+        
+        self.addSubview(stackView)
+        
         NSLayoutConstraint.activate([
-        ericktextfield.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 1),
-        ericktextfield.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1)
+        stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 1),
+        stackView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1),
+        self.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1),
+        self.bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1)
+        
         ])
         
     }
@@ -58,11 +101,12 @@ extension LoginView
 extension LoginView: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        ericktextfield.endEditing(true)
+        usernametextfield.endEditing(true)
+        return passwordtextfield.endEditing(true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        guard let erickfield = ericktextfield.text else {return}
-        print("DEBUG: \(erickfield)")
+        print("DEBUG: \(textField.text)")
     }
+  
 }
