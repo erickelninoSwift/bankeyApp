@@ -10,11 +10,21 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private let login = LoginView()
+    let loginViewField = LoginView()
     
-
+    let titleViewContainer = TitleView()
     
-    private let loginButton : UIButton =
+    let activityIndicator: UIActivityIndicatorView =
+    {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        indicator.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        return indicator
+    }()
+    
+    lazy var loginButton : UIButton =
     {
         let button = UIButton(type: .system)
         button.heightAnchor.constraint(equalToConstant: 35).isActive = true
@@ -22,11 +32,21 @@ class LoginViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.setTitle("Sign In", for:[])
         button.layer.cornerRadius = 5
+        
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleSignInTapped), for: .primaryActionTriggered)
         return button
     }()
     
+    var username: String?
+    {
+        return loginViewField.usernametextfield.text
+    }
+    
+    var password: String?
+    {
+        return loginViewField.passwordtextfield.text
+    }
     
     
     private let ErroMessageLabel: UILabel =
@@ -35,7 +55,7 @@ class LoginViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .systemRed
         label.numberOfLines = 0
-        label.isHidden = false
+        label.isHidden = true
         label.text = "There was an error with your password"
         
         return label
@@ -53,40 +73,54 @@ extension LoginViewController
 {
     private func style()
     {
-        login.translatesAutoresizingMaskIntoConstraints = false
+        loginViewField.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         ErroMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        titleViewContainer.clipsToBounds = true
         
     }
     
     
     private func layout()
     {
-        view.addSubview(login)
+        view.addSubview(titleViewContainer)
+        view.addSubview(loginViewField)
         view.addSubview(loginButton)
         view.addSubview(ErroMessageLabel)
         
+        NSLayoutConstraint.activate([titleViewContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     titleViewContainer.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 15),
+                                     titleViewContainer.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+                                     view.trailingAnchor.constraint(equalToSystemSpacingAfter: titleViewContainer.trailingAnchor, multiplier: 2)
+        ])
+        
         NSLayoutConstraint.activate([
-            login.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            login.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: login.trailingAnchor, multiplier: 1)
+            loginViewField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginViewField.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginViewField.trailingAnchor, multiplier: 1)
             
         ])
         
         // button layout contraints
         
         NSLayoutConstraint.activate([ loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                      loginButton.topAnchor.constraint(equalToSystemSpacingBelow: login.bottomAnchor, multiplier: 2),
+                                      loginButton.topAnchor.constraint(equalToSystemSpacingBelow: loginViewField.bottomAnchor, multiplier: 2),
                                       loginButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
                                       view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginButton.trailingAnchor, multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([ ErroMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
-                                      ErroMessageLabel.leadingAnchor.constraint(equalTo: login.leadingAnchor),
-                                      ErroMessageLabel.trailingAnchor.constraint(equalTo: login.trailingAnchor)
+                                      ErroMessageLabel.leadingAnchor.constraint(equalTo: loginViewField.leadingAnchor),
+                                      ErroMessageLabel.trailingAnchor.constraint(equalTo: loginViewField.trailingAnchor)
         
         ])
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
     }
 }
 
@@ -94,12 +128,34 @@ extension LoginViewController
 {
     @objc func handleSignInTapped(sender: UIButton)
     {
-        ErroMessageLabel.isHidden.toggle()
+        guard let username = username,let password = password else {
+            assertionFailure("Username/Password should not be nil")
+            return
+            
+        }
+        if username.isEmpty || password.isEmpty
+        {
+            configureView(message: "username / password can not be empty")
+        }
+        if username == "Erick" && password == "Jackpot"
+        {
+            login()
+            activityIndicator.startAnimating()
+        }else
+        {
+           
+        }
     }
     
     private func login()
     {
-        guard let username = user
+       print("DEBUG: LOGIN")
+    }
+    
+    private func configureView(message:String)
+    {
+        ErroMessageLabel.isHidden = false
+        ErroMessageLabel.text = message
     }
 }
 

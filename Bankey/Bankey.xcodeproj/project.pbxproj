@@ -14,6 +14,7 @@
 		945C229629567907009395AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945C229529567907009395AD /* Assets.xcassets */; };
 		945C229929567907009395AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 945C229729567907009395AD /* LaunchScreen.storyboard */; };
 		945C22A529567A80009395AD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22A429567A80009395AD /* LoginView.swift */; };
+		945C22A729577D02009395AD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22A629577D02009395AD /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		945C229829567907009395AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		945C229A29567907009395AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945C22A429567A80009395AD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		945C22A629577D02009395AD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				945C22A429567A80009395AD /* LoginView.swift */,
+				945C22A629577D02009395AD /* TitleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				945C228D295678E4009395AD /* AppDelegate.swift in Sources */,
 				945C22A529567A80009395AD /* LoginView.swift in Sources */,
 				945C228F295678E4009395AD /* SceneDelegate.swift in Sources */,
+				945C22A729577D02009395AD /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
