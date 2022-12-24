@@ -92,14 +92,14 @@ extension LoginViewController
         
         NSLayoutConstraint.activate([titleViewContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      titleViewContainer.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 15),
-                                     titleViewContainer.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-                                     view.trailingAnchor.constraint(equalToSystemSpacingAfter: titleViewContainer.trailingAnchor, multiplier: 2)
+                                     titleViewContainer.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+                                     view.trailingAnchor.constraint(equalToSystemSpacingAfter: titleViewContainer.trailingAnchor, multiplier: 3)
         ])
         
         NSLayoutConstraint.activate([
             loginViewField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loginViewField.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginViewField.trailingAnchor, multiplier: 1)
+            loginViewField.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginViewField.trailingAnchor, multiplier: 3)
             
         ])
         
@@ -107,8 +107,8 @@ extension LoginViewController
         
         NSLayoutConstraint.activate([ loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                       loginButton.topAnchor.constraint(equalToSystemSpacingBelow: loginViewField.bottomAnchor, multiplier: 2),
-                                      loginButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-                                      view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginButton.trailingAnchor, multiplier: 1)
+                                      loginButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+                                      view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginButton.trailingAnchor, multiplier: 3)
         ])
         
         NSLayoutConstraint.activate([ ErroMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
