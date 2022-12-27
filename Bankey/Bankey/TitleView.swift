@@ -29,7 +29,7 @@ class TitleView: UIView
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "Your permium source for All things banling"
+        label.text = "Your permium source for All things Banking"
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .black
         label.numberOfLines = 0

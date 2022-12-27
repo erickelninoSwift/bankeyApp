@@ -141,6 +141,7 @@ extension LoginViewController
         {
             login()
             activityIndicator.startAnimating()
+            activityIndicator.stopAnimating()
         }else
         {
            
