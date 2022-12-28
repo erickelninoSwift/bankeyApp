@@ -12,30 +12,52 @@ class OnboardingViewcontroller: UIViewController
 {
     let stackview = UIStackView()
     
-    private let onboardingImage: UIImageView =
+    let imageName: String
+    let onboardingtext:String
+    
+   
+    
+    
+    lazy var onboardingImage: UIImageView =
     {
         let myImage = UIImageView()
         myImage.adjustsImageSizeForAccessibilityContentSizeCategory = true
         myImage.translatesAutoresizingMaskIntoConstraints = false
-        myImage.clipsToBounds = true
-        myImage.image = UIImage(named: "delorean")
+        myImage.image = UIImage(named: imageName)
+        
+        myImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        myImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
 //        myImage.heightAnchor.constraint(equalToConstant: 180).isActive = true
-      
+
         return myImage
     }()
     
-    private let textLabel: UILabel =
+    lazy var textLabel: UILabel =
     {
         let label = UILabel()
     
         label.textColor = .darkGray
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Bankey is faster, easier to use, and has a brand new look and feel that will make you feel like you are back in the 80s."
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.adjustsFontForContentSizeCategory = true
+        label.text = onboardingtext
         return label
     }()
+    
+
+     init(Image: String,onboadingText: String) {
+        self.onboardingtext = onboadingText
+        self.imageName = Image
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +82,7 @@ extension OnboardingViewcontroller
     
     private func layout()
     {
+       
         stackview.addArrangedSubview(onboardingImage)
         stackview.addArrangedSubview(textLabel)
         view.addSubview(stackview)
@@ -71,5 +94,15 @@ extension OnboardingViewcontroller
         
         ])
         
+        
+        
+    }
+}
+
+extension OnboardingViewcontroller
+{
+    @objc func HandleClose()
+    {
+        print("DEBUG: Close")
     }
 }

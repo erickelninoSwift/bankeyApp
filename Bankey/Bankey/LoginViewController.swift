@@ -7,6 +7,10 @@
 //
 
 import UIKit
+protocol LoginViewControllerDelegate: AnyObject
+{
+    func didLogin()
+}
 
 class LoginViewController: UIViewController {
     
@@ -23,6 +27,8 @@ class LoginViewController: UIViewController {
         
         return indicator
     }()
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     lazy var loginButton : UIButton =
     {
@@ -150,7 +156,7 @@ extension LoginViewController
     
     private func login()
     {
-       print("DEBUG: LOGIN")
+        delegate?.didLogin()
     }
     
     private func configureView(message:String)

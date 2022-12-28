@@ -12,14 +12,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    let MyLoginViewcontroller = LoginViewController()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
   
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = OnboardingViewcontroller()
+        MyLoginViewcontroller.delegate = self
+        window?.rootViewController = MyLoginViewcontroller
     }
+    
+    
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -50,5 +54,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+extension SceneDelegate: LoginViewControllerDelegate
+{
+    func didLogin() {
+        print("DEBUG: APP DELEGATE LOGIN")
+    }
 }
 

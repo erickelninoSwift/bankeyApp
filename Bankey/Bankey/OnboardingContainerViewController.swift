@@ -10,6 +10,20 @@ import UIKit
 
 class OnboardingContainerViewController: UIViewController
 {
+    private lazy var closebutton: UIButton =
+    {
+        let button =  UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Close", for: [])
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        
+        button.addTarget(self, action: #selector(HandleClose), for: .primaryActionTriggered)
+        
+        return button
+    }()
+    
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
     var currentVC: UIViewController {
@@ -17,12 +31,16 @@ class OnboardingContainerViewController: UIViewController
         }
     }
     
+    
+    
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let page1 = ViewController1()
-        let page2 = ViewController2()
-        let page3 = ViewController3()
+        let page1 = OnboardingViewcontroller(Image: "delorean", onboadingText: "Bankey is faster, easier to use, and has a brand new look and feel that will make you feel like you are back in the 80s.")
+        let page2 = OnboardingViewcontroller(Image: "world", onboadingText: "Move your money around the world quickly and securely.")
+        let page3 = OnboardingViewcontroller(Image: "thumbs", onboadingText: "Learn more at www.bankey.com.")
         
         pages.append(page1)
         pages.append(page2)
@@ -33,13 +51,65 @@ class OnboardingContainerViewController: UIViewController
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
+    
+    
+    
+    
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          setup()
+          style()
+          layout()
         
+    }
+}
+
+// UIPageViewController DataSource
+
+extension OnboardingContainerViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return getPreviousViewController(from: viewController)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return getNextViewController(from: viewController)
+    }
+    
+    private func getPreviousViewController(from viewController: UIViewController) -> UIViewController? {
+        guard let index = pages.firstIndex(of: viewController), index - 1 >= 0 else { return nil }
+        currentVC = pages[index - 1]
+        return pages[index - 1]
+    }
+    
+    private func getNextViewController(from viewController: UIViewController) -> UIViewController? {
+        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil }
+        currentVC = pages[index + 1]
+        return pages[index + 1]
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return pages.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return pages.firstIndex(of: self.currentVC) ?? 0
+    }
+}
+
+extension OnboardingContainerViewController
+{
+    
+    
+    
+    private func setup()
+    {
         view.backgroundColor = .systemPurple
         
         addChild(pageViewController)
@@ -59,60 +129,23 @@ class OnboardingContainerViewController: UIViewController
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
     }
-}
 
-// UIPageViewController DataSource
-
-extension OnboardingContainerViewController: UIPageViewControllerDataSource {
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return getPreviousViewController(from: viewController)
+    private func style()
+    {
+        view.addSubview(closebutton)
     }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return getNextViewController(from: viewController)
+    
+    private func layout()
+    {
+        NSLayoutConstraint.activate([closebutton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+                                     closebutton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor ,multiplier: 2)
+        ])
     }
-
-    private func getPreviousViewController(from viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index - 1 >= 0 else { return nil }
-        currentVC = pages[index - 1]
-        return pages[index - 1]
-    }
-
-    private func getNextViewController(from viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil }
-        currentVC = pages[index + 1]
-        return pages[index + 1]
-    }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return pages.count
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return pages.firstIndex(of: self.currentVC) ?? 0
+    
+    
+    @objc func HandleClose()
+    {
+        print("DEBUG: Close")
     }
 }
 
-//Viewcontrollers
-
-class ViewController1: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemRed
-    }
-}
-
-class ViewController2: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
-    }
-}
-
-class ViewController3: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBlue
-    }
-}
