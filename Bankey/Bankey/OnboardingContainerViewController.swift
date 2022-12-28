@@ -8,8 +8,17 @@
 
 import UIKit
 
+protocol OnboardingContainerViewControllerDelegate:AnyObject {
+    func didFinishOnboarding()
+}
+
 class OnboardingContainerViewController: UIViewController
 {
+    
+    
+    
+    weak var delegate: OnboardingContainerViewControllerDelegate?
+    
     private lazy var closebutton: UIButton =
     {
         let button =  UIButton(type: .system)
@@ -145,7 +154,7 @@ extension OnboardingContainerViewController
     
     @objc func HandleClose()
     {
-        print("DEBUG: Close")
+        delegate?.didFinishOnboarding()
     }
 }
 

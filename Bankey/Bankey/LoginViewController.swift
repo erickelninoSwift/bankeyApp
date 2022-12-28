@@ -145,9 +145,10 @@ extension LoginViewController
         }
         if username == "Erick" && password == "Jackpot"
         {
-            login()
+           
             activityIndicator.startAnimating()
             activityIndicator.stopAnimating()
+            login()
         }else
         {
            
