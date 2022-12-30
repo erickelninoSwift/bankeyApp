@@ -17,6 +17,7 @@
 		945C22A729577D02009395AD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22A629577D02009395AD /* TitleView.swift */; };
 		945C22B3295B3954009395AD /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22B2295B3954009395AD /* OnboardingContainerViewController.swift */; };
 		945C22B5295B4960009395AD /* OnboardingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22B4295B4960009395AD /* OnboardingViewcontroller.swift */; };
+		945C22B7295F67ED009395AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22B6295F67ED009395AD /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		945C22A629577D02009395AD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		945C22B2295B3954009395AD /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		945C22B4295B4960009395AD /* OnboardingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewcontroller.swift; sourceTree = "<group>"; };
+		945C22B6295F67ED009395AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				945C2290295678E4009395AD /* LoginViewController.swift */,
+				945C22B6295F67ED009395AD /* WelcomeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				945C2291295678E4009395AD /* LoginViewController.swift in Sources */,
+				945C22B7295F67ED009395AD /* WelcomeViewController.swift in Sources */,
 				945C22B3295B3954009395AD /* OnboardingContainerViewController.swift in Sources */,
 				945C228D295678E4009395AD /* AppDelegate.swift in Sources */,
 				945C22A529567A80009395AD /* LoginView.swift in Sources */,

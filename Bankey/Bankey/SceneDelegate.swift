@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let MyLoginViewcontroller = LoginViewController()
     let controller = OnboardingContainerViewController()
+    let welcomeController = WelcomeViewController()
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -23,8 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         MyLoginViewcontroller.delegate = self
         controller.delegate = self
-
-        window?.rootViewController = MyLoginViewcontroller
+        welcomeController.delegate = self
+        
+        window?.rootViewController = welcomeController
     }
     
     
@@ -71,7 +73,14 @@ extension SceneDelegate: LoginViewControllerDelegate
 extension SceneDelegate: OnboardingContainerViewControllerDelegate
 {
     func didFinishOnboarding() {
-        print("DEBUG: DONE ONBOARDING")
+        setRootviewController(vc: welcomeController)
+    }
+}
+
+extension SceneDelegate: WelcomeViewControllerDelegate
+{
+    func didLogoutbuttonPressed() {
+        setRootviewController(vc: MyLoginViewcontroller)
     }
 }
 
