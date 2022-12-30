@@ -91,7 +91,7 @@ extension SceneDelegate
         window.makeKeyAndVisible()
         
         UIView.transition(with: window,
-                          duration: 0.7,
+                          duration: 0.7                                                                                                                                                                                  ,
                           options: .transitionCrossDissolve,
                           animations: nil,
                           completion: nil)
