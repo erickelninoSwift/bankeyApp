@@ -37,9 +37,9 @@ extension MaintabBarViewController
     
     private func configureTabController()
     {
+//        setStatus()
         
-        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
-        
+         
          let viewcontroller1 = AccountSummaryViewController()
          let viewcontroller2 = MoveMoneyViewController()
          let viewcontroller3 = MoreViewController()
@@ -52,6 +52,7 @@ extension MaintabBarViewController
         let moveMoney = UINavigationController(rootViewController: viewcontroller2)
         let moreVc = UINavigationController(rootViewController: viewcontroller3)
         
+
         hideNavigationController(navigation: summary.navigationBar)
         moveMoney.navigationBar.isHidden = true
         moreVc.navigationBar.isHidden = true
@@ -61,6 +62,8 @@ extension MaintabBarViewController
         tabBar.tintColor = appColor
         tabBar.isTranslucent = false
         self.selectedIndex = 0
+        
+        
     }
     
     
@@ -71,6 +74,17 @@ extension MaintabBarViewController
         navigation.setBackgroundImage(img, for: .default)
         navigation.isTranslucent = false
     }
+    
+    func setStatus()
+    {
+        let navigationAppearance = UINavigationBarAppearance()
+        navigationAppearance.configureWithTransparentBackground()
+        
+        navigationAppearance.backgroundColor = appColor
+        UINavigationBar.appearance().standardAppearance = navigationAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationAppearance
+    }
+
 }
 
 extension MaintabBarViewController
