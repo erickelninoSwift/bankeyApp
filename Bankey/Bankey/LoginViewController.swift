@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     let titleViewContainer = TitleView()
     
-    let activityIndicator: UIActivityIndicatorView =
+   private let activityIndicator: UIActivityIndicatorView =
     {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.translatesAutoresizingMaskIntoConstraints = false
