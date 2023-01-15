@@ -16,9 +16,9 @@ class MaintabBarViewController: UITabBarController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         style()
-         layout()
-         configureTabController()
+        style()
+        layout()
+        configureTabController()
     }
     
     
@@ -27,7 +27,7 @@ extension MaintabBarViewController
 {
     private func style()
     {
-    
+        
     }
     
     private func layout()
@@ -37,12 +37,12 @@ extension MaintabBarViewController
     
     private func configureTabController()
     {
-//        setStatus()
+        //        setStatus()
         
-         
-         let viewcontroller1 = AccountSummaryViewController()
-         let viewcontroller2 = MoveMoneyViewController()
-         let viewcontroller3 = MoreViewController()
+        self.delegate = self
+        let viewcontroller1 = AccountSummaryViewController()
+        let viewcontroller2 = MoveMoneyViewController()
+        let viewcontroller3 = MoreViewController()
         
         viewcontroller1.tabBarItem = UITabBarItem(title: "Summary", image: UIImage(systemName: "list.bullet"), tag: 0)
         viewcontroller2.tabBarItem = UITabBarItem(title: "Move Money", image: UIImage(systemName: "creditcard"), tag: 1)
@@ -52,7 +52,7 @@ extension MaintabBarViewController
         let moveMoney = UINavigationController(rootViewController: viewcontroller2)
         let moreVc = UINavigationController(rootViewController: viewcontroller3)
         
-
+        
         hideNavigationController(navigation: summary.navigationBar)
         moveMoney.navigationBar.isHidden = true
         moreVc.navigationBar.isHidden = true
@@ -84,12 +84,17 @@ extension MaintabBarViewController
         UINavigationBar.appearance().standardAppearance = navigationAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationAppearance
     }
-
+    
 }
 
-extension MaintabBarViewController
+extension MaintabBarViewController: UITabBarControllerDelegate
 {
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let index = viewControllers?.firstIndex(of: viewController)
+        {
+            print("DEBUG: VIEW CONTROLLER : \(index)")
+        }
+    }
 }
 
 
