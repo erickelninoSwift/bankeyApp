@@ -8,12 +8,17 @@
 
 import UIKit
 
-class AccountSummaryViewController: UITableViewController
+class AccountSummaryViewController: UIViewController
 {
+    
+    var tableview = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+        tableview.delegate = self
+        tableview.dataSource = self
         
     }
 }
@@ -22,29 +27,35 @@ extension AccountSummaryViewController
 {
     private func style()
     {
+        view.addSubview(tableview)
         view.backgroundColor = .white
+        tableview.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
     private func layout()
     {
-        
+        NSLayoutConstraint.activate([tableview.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 0),
+                                     view.trailingAnchor.constraint(equalToSystemSpacingAfter: tableview.trailingAnchor, multiplier: 0),
+                                     tableview.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 0),
+                                     view.bottomAnchor.constraint(equalToSystemSpacingBelow: tableview.bottomAnchor, multiplier: 0)
+        ])
     }
 }
 
-extension AccountSummaryViewController
+extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSource
 {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableview.deselectRow(at: indexPath, animated: true)
     }
 }
 

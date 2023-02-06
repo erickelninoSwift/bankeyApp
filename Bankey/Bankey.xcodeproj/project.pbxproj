@@ -70,6 +70,8 @@
 		945C228B295678E4009395AD /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				94C54AC029919A390020213C /* Footer */,
+				94C54ABF29919A130020213C /* Header */,
 				945C22B1295B37D6009395AD /* Onboarding */,
 				945C22A02956798A009395AD /* Files */,
 				945C22A12956799C009395AD /* Model */,
@@ -126,6 +128,20 @@
 				945C22B4295B4960009395AD /* OnboardingViewcontroller.swift */,
 			);
 			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		94C54ABF29919A130020213C /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		94C54AC029919A390020213C /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Footer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
