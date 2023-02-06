@@ -98,14 +98,6 @@ extension MaintabBarViewController: UITabBarControllerDelegate
 }
 
 
-class AccountSummaryViewController: UIViewController
-{
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .systemYellow
-    }
-}
 
 class MoveMoneyViewController: UIViewController
 {
