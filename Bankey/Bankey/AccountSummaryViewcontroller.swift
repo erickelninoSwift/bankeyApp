@@ -8,10 +8,22 @@
 
 import UIKit
 
+
+private let cellid = "AccountSummaryViewController"
 class AccountSummaryViewController: UIViewController
 {
     
-    var tableview = UITableView()
+    let data = ["Erick","Jackpot","Cholo"]
+    
+    private  var tableview: UITableView =
+    {
+        
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.rowHeight = 80
+        return table
+        
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +41,9 @@ extension AccountSummaryViewController
     {
         view.addSubview(tableview)
         view.backgroundColor = .white
-        tableview.translatesAutoresizingMaskIntoConstraints = false
+        self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
+        
+        
     }
     
     
@@ -45,16 +59,21 @@ extension AccountSummaryViewController
 
 extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSource
 {
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
     }
     
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
+        cell.selectionStyle = .none
+        let currentdata = data[indexPath.row]
+        cell.textLabel?.text = currentdata
+        return cell
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableview.deselectRow(at: indexPath, animated: true)
     }
 }

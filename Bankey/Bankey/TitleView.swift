@@ -10,7 +10,10 @@ import UIKit
 
 class TitleView: UIView
 {
+    
+    
     let stackview = UIStackView()
+    
     
     private let titlelabel: UILabel =
     {
@@ -37,6 +40,7 @@ class TitleView: UIView
        
         return label
     }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
