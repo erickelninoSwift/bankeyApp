@@ -15,18 +15,20 @@ class AccountSummaryViewController: UIViewController
     
     let data = ["Erick","Jackpot","Cholo"]
     
+    
+    
     private  var tableview: UITableView =
     {
-        
         let table = UITableView()
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.rowHeight = 80
-        return table
         
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.rowHeight = AccountSummaryHeaderView.rowheight
+        return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         style()
         layout()
         tableview.delegate = self
@@ -42,8 +44,8 @@ extension AccountSummaryViewController
         view.addSubview(tableview)
         view.backgroundColor = .white
         self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
-        
-        
+        setupHeaderView()
+
     }
     
     
@@ -55,6 +57,17 @@ extension AccountSummaryViewController
                                      view.bottomAnchor.constraint(equalToSystemSpacingBelow: tableview.bottomAnchor, multiplier: 0)
         ])
     }
+    
+    private func setupHeaderView()
+    {
+        let headerView = AccountSummaryHeaderView(frame: .zero)
+        var size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        size.width = UIScreen.main.bounds.width
+        headerView.frame.size = size
+        headerView.backgroundColor = .systemRed
+        self.tableview.tableHeaderView = headerView
+    }
+
 }
 
 extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSource
@@ -62,12 +75,11 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
-    
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
-        cell.selectionStyle = .none
+        let cell = UITableViewCell()
+      
         let currentdata = data[indexPath.row]
         cell.textLabel?.text = currentdata
         return cell
@@ -76,6 +88,7 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableview.deselectRow(at: indexPath, animated: true)
     }
+
 }
 
 

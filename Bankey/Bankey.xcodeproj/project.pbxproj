@@ -19,6 +19,8 @@
 		945C22B5295B4960009395AD /* OnboardingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22B4295B4960009395AD /* OnboardingViewcontroller.swift */; };
 		945C22B7295F67ED009395AD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C22B6295F67ED009395AD /* WelcomeViewController.swift */; };
 		94C54ABE29914FEE0020213C /* AccountSummaryViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C54ABD29914FEE0020213C /* AccountSummaryViewcontroller.swift */; };
+		94C54AC22991F12E0020213C /* AccountSummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C54AC12991F12E0020213C /* AccountSummaryHeaderView.swift */; };
+		94C54AC42991F18E0020213C /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C54AC32991F18E0020213C /* AccountSummaryHeaderView.xib */; };
 		94E97DAF2961C04F00DECDCE /* MaintabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E97DAE2961C04F00DECDCE /* MaintabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		945C22B4295B4960009395AD /* OnboardingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewcontroller.swift; sourceTree = "<group>"; };
 		945C22B6295F67ED009395AD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		94C54ABD29914FEE0020213C /* AccountSummaryViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewcontroller.swift; sourceTree = "<group>"; };
+		94C54AC12991F12E0020213C /* AccountSummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderView.swift; sourceTree = "<group>"; };
+		94C54AC32991F18E0020213C /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
 		94E97DAE2961C04F00DECDCE /* MaintabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,8 @@
 		94C54ABF29919A130020213C /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				94C54AC12991F12E0020213C /* AccountSummaryHeaderView.swift */,
+				94C54AC32991F18E0020213C /* AccountSummaryHeaderView.xib */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -202,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C54AC42991F18E0020213C /* AccountSummaryHeaderView.xib in Resources */,
 				945C229929567907009395AD /* LaunchScreen.storyboard in Resources */,
 				945C229629567907009395AD /* Assets.xcassets in Resources */,
 				945C2294295678E4009395AD /* Main.storyboard in Resources */,
@@ -218,6 +225,7 @@
 				945C2291295678E4009395AD /* LoginViewController.swift in Sources */,
 				94E97DAF2961C04F00DECDCE /* MaintabBarViewController.swift in Sources */,
 				945C22B7295F67ED009395AD /* WelcomeViewController.swift in Sources */,
+				94C54AC22991F12E0020213C /* AccountSummaryHeaderView.swift in Sources */,
 				945C22B3295B3954009395AD /* OnboardingContainerViewController.swift in Sources */,
 				945C228D295678E4009395AD /* AppDelegate.swift in Sources */,
 				945C22A529567A80009395AD /* LoginView.swift in Sources */,

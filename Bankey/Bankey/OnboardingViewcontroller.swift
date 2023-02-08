@@ -27,8 +27,7 @@ class OnboardingViewcontroller: UIViewController
         
         myImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
         myImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
-//        myImage.heightAnchor.constraint(equalToConstant: 180).isActive = true
+    
 
         return myImage
     }()
