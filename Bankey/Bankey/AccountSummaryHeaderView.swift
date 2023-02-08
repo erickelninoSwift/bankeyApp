@@ -22,13 +22,11 @@ class AccountSummaryHeaderView: UIView
         super.init(frame: frame)
         style()
         layout()
-
     }
-    
     
     override var intrinsicContentSize: CGSize
     {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 144)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 155)
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +43,8 @@ extension AccountSummaryHeaderView
         bundle.loadNibNamed("AccountSummaryHeaderView", owner: self, options: nil)
         self.addSubview(ContentView)
         ContentView.translatesAutoresizingMaskIntoConstraints = false
+        ContentView.backgroundColor = appColor
+        
     }
     
     private func layout()

@@ -20,15 +20,13 @@ class AccountSummaryViewController: UIViewController
     private  var tableview: UITableView =
     {
         let table = UITableView()
-        
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.rowHeight = AccountSummaryHeaderView.rowheight
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        setupHeaderView()
         style()
         layout()
         tableview.delegate = self
@@ -41,10 +39,12 @@ extension AccountSummaryViewController
 {
     private func style()
     {
+        tableview.rowHeight = AccountSummaryHeaderView.rowheight
+        self.navigationController?.navigationBar.isHidden = true
         view.addSubview(tableview)
         view.backgroundColor = .white
         self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
-        setupHeaderView()
+       
 
     }
     
@@ -64,7 +64,6 @@ extension AccountSummaryViewController
         var size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = UIScreen.main.bounds.width
         headerView.frame.size = size
-        headerView.backgroundColor = .systemRed
         self.tableview.tableHeaderView = headerView
     }
 
