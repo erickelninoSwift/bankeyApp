@@ -26,12 +26,13 @@ class AccountSummaryViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableview.rowHeight = AccountSummaryCell.tableviewRowHeight
         setupHeaderView()
         style()
         layout()
         tableview.delegate = self
         tableview.dataSource = self
-        
+        self.tableview.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.AccountSumCellID)
     }
 }
 
@@ -43,9 +44,6 @@ extension AccountSummaryViewController
         self.navigationController?.navigationBar.isHidden = true
         view.addSubview(tableview)
         view.backgroundColor = .white
-        self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
-       
-
     }
     
     
@@ -65,6 +63,8 @@ extension AccountSummaryViewController
         size.width = UIScreen.main.bounds.width
         headerView.frame.size = size
         self.tableview.tableHeaderView = headerView
+        self.tableview.tableFooterView = UIView()
+        
     }
 
 }
@@ -77,10 +77,8 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-      
-        let currentdata = data[indexPath.row]
-        cell.textLabel?.text = currentdata
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.AccountSumCellID, for: indexPath) as? AccountSummaryCell else { return UITableViewCell()}
+       
         return cell
     }
     
