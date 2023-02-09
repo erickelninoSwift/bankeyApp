@@ -11,18 +11,27 @@ import UIKit
 class AccountSummaryCell : UITableViewCell
 {
     static let AccountSumCellID = "AccountSummaryCellID"
-       static let tableviewRowHeight: CGFloat = 100
+    static let tableviewRowHeight: CGFloat = 100
     
      lazy var titleLabel: UILabel =
     {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Banking"
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = .black
         return label
     }()
     
+    
+    lazy var underlineView: UIView =
+    {
+         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = appColor
+        view.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        return view
+    }()
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -42,6 +51,7 @@ extension AccountSummaryCell
     fileprivate func layout()
     {
         contentView.addSubview(titleLabel)
+        contentView.addSubview(underlineView)
     }
     
     
@@ -49,6 +59,11 @@ extension AccountSummaryCell
     {
         NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1),
                                      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 2)
+        ])
+        
+        NSLayoutConstraint.activate([underlineView.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 2),
+                                     underlineView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
+                                     underlineView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)
         ])
     }
 }

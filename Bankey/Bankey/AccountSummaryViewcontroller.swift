@@ -15,24 +15,27 @@ class AccountSummaryViewController: UIViewController
     
     let data = ["Erick","Jackpot","Cholo"]
     
-    
-    
     private  var tableview: UITableView =
     {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.AccountSumCellID)
+        table.rowHeight = AccountSummaryCell.tableviewRowHeight
         return table
     }()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.rowHeight = AccountSummaryCell.tableviewRowHeight
+       
         setupHeaderView()
         style()
         layout()
         tableview.delegate = self
         tableview.dataSource = self
-        self.tableview.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.AccountSumCellID)
+       
     }
 }
 
@@ -40,7 +43,6 @@ extension AccountSummaryViewController
 {
     private func style()
     {
-        tableview.rowHeight = AccountSummaryHeaderView.rowheight
         self.navigationController?.navigationBar.isHidden = true
         view.addSubview(tableview)
         view.backgroundColor = .white
