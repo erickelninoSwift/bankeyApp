@@ -67,6 +67,17 @@ class AccountSummaryCell : UITableViewCell
     }()
     
     
+    lazy var BalanceAmount: UILabel =
+    {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let attributed = NSAttributedString(string: "60.000.000 \n", attributes: [.font:UIFont.preferredFont(forTextStyle: .body),.foregroundColor:UIColor.darkGray])
+        let mutableString = NSMutableAttributedString(string: "Some Balance", attributes: [.font:UIFont.systemFont(ofSize: 14, weight: .semibold),.foregroundColor: UIColor.darkGray])
+        
+        return label
+    }()
+    
+    
     lazy var chevronImageView: UIImageView =
     {
         let myImage = UIImageView()
