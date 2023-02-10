@@ -71,9 +71,11 @@ class AccountSummaryCell : UITableViewCell
     {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let attributed = NSAttributedString(string: "60.000.000 \n", attributes: [.font:UIFont.preferredFont(forTextStyle: .body),.foregroundColor:UIColor.darkGray])
-        let mutableString = NSMutableAttributedString(string: "Some Balance", attributes: [.font:UIFont.systemFont(ofSize: 14, weight: .semibold),.foregroundColor: UIColor.darkGray])
-        
+        let attributed = NSAttributedString(string: "60.000.000", attributes: [.font:UIFont.preferredFont(forTextStyle: .body),.foregroundColor:UIColor.darkGray])
+        let mutableString = NSMutableAttributedString(string: "Some balance \n", attributes: [.font:UIFont.systemFont(ofSize: 14, weight: .semibold),.foregroundColor: UIColor.darkGray])
+        mutableString.append(attributed)
+        label.attributedText = mutableString
+        label.textAlignment = .right
         return label
     }()
     
@@ -89,9 +91,7 @@ class AccountSummaryCell : UITableViewCell
         return myImage
     }()
     
-    
-    
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier:  reuseIdentifier)
         layout()
@@ -112,25 +112,24 @@ extension AccountSummaryCell
         contentView.addSubview(underlineView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(chevronImageView)
-        
-        
-        
+        contentView.addSubview(BalanceAmount)
     }
     
     
     fileprivate func config()
     {
-        let stack = UIStackView(arrangedSubviews: [BalanceLable,AmountLable])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = 2
-        stack.distribution = .fillEqually
+//        let stack = UIStackView(arrangedSubviews: [BalanceLable,AmountLable])
+//        stack.translatesAutoresizingMaskIntoConstraints = false
+//        stack.axis = .vertical
+//        stack.spacing = 2
+//        stack.distribution = .fillEqually
         
-        contentView.addSubview(stack)
-        
-        NSLayoutConstraint.activate([stack.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-                                     self.trailingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor, multiplier: 5)
+//        contentView.addSubview(stack)
+//
+        NSLayoutConstraint.activate([BalanceAmount.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+                                     self.trailingAnchor.constraint(equalToSystemSpacingAfter: BalanceAmount.trailingAnchor, multiplier: 5)
         ])
+        
         
         NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1),
                                      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 2)
@@ -145,9 +144,9 @@ extension AccountSummaryCell
                                      nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 2)
         ])
         
-        NSLayoutConstraint.activate([chevronImageView.centerYAnchor.constraint(equalTo: stack.centerYAnchor),
+        NSLayoutConstraint.activate([chevronImageView.centerYAnchor.constraint(equalTo: BalanceAmount.centerYAnchor),
                                      self.trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 2),
-                                     chevronImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor, multiplier: 1)
+                                     chevronImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: BalanceAmount.trailingAnchor, multiplier: 1)
         ])
         
     }
