@@ -192,10 +192,13 @@ extension AccountSummaryCell
         {
         case .Banking:
             underlineView.backgroundColor = appColor
+            BalanceLable.text = "Current balance"
         case .Creditcard:
             underlineView.backgroundColor = .systemOrange
+             BalanceLable.text = "Current balance"
         case .Investment:
             underlineView.backgroundColor = .systemPurple
+             BalanceLable.text = "Value"
         }
     }
 }
