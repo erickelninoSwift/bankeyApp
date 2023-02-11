@@ -59,25 +59,26 @@ class AccountSummaryCell : UITableViewCell
         {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "R908.560.000"
-            label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
             label.textAlignment = .right
+            label.attributedText = makeFormattedBalance(dollars: "900,340", cents: "45")
             label.textColor = .black
             return label
     }()
     
-    
-    lazy var BalanceAmount: UILabel =
-    {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        let attributed = NSAttributedString(string: "60.000.000", attributes: [.font:UIFont.preferredFont(forTextStyle: .body),.foregroundColor:UIColor.darkGray])
-        let mutableString = NSMutableAttributedString(string: "Some balance \n", attributes: [.font:UIFont.systemFont(ofSize: 14, weight: .semibold),.foregroundColor: UIColor.darkGray])
-        mutableString.append(attributed)
-        label.attributedText = mutableString
-        label.textAlignment = .right
-        return label
-    }()
+//
+//    lazy var BalanceAmount: UILabel =
+//    {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        var attributed = NSAttributedString(string: "\n 60.000.000", attributes: [.font:UIFont.preferredFont(forTextStyle: .body),.foregroundColor:UIColor.darkGray])
+//        var mutableString = NSMutableAttributedString(string: "Some balance \n ", attributes: [.font:UIFont.systemFont(ofSize: 14, weight: .bold),.foregroundColor: UIColor.darkGray])
+//        mutableString.append(attributed)
+//        label.attributedText = mutableString
+//        label.textAlignment = .right
+//
+//        return label
+//    }()
     
     
     lazy var chevronImageView: UIImageView =
@@ -112,22 +113,22 @@ extension AccountSummaryCell
         contentView.addSubview(underlineView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(chevronImageView)
-        contentView.addSubview(BalanceAmount)
+//        contentView.addSubview(BalanceAmount)
     }
     
     
     fileprivate func config()
     {
-//        let stack = UIStackView(arrangedSubviews: [BalanceLable,AmountLable])
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//        stack.axis = .vertical
-//        stack.spacing = 2
-//        stack.distribution = .fillEqually
+        let stack = UIStackView(arrangedSubviews: [BalanceLable,AmountLable])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 0
+        stack.distribution = .fillEqually
         
-//        contentView.addSubview(stack)
-//
-        NSLayoutConstraint.activate([BalanceAmount.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-                                     self.trailingAnchor.constraint(equalToSystemSpacingAfter: BalanceAmount.trailingAnchor, multiplier: 5)
+        contentView.addSubview(stack)
+
+        NSLayoutConstraint.activate([stack.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+                                     self.trailingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor, multiplier: 5)
         ])
         
         
@@ -144,11 +145,28 @@ extension AccountSummaryCell
                                      nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 2)
         ])
         
-        NSLayoutConstraint.activate([chevronImageView.centerYAnchor.constraint(equalTo: BalanceAmount.centerYAnchor),
+        NSLayoutConstraint.activate([chevronImageView.centerYAnchor.constraint(equalTo: stack.centerYAnchor),
                                      self.trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 2),
-                                     chevronImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: BalanceAmount.trailingAnchor, multiplier: 1)
+                                     chevronImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor, multiplier: 1)
         ])
         
+    }
+}
+
+extension AccountSummaryCell {
+    private func makeFormattedBalance(dollars: String, cents: String) -> NSMutableAttributedString {
+        let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
+        let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
+        let centAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .footnote), .baselineOffset: 8]
+        
+        let rootString = NSMutableAttributedString(string: "R", attributes: dollarSignAttributes)
+        let dollarString = NSAttributedString(string: dollars, attributes: dollarAttributes)
+        let centString = NSAttributedString(string: cents, attributes: centAttributes)
+        
+        rootString.append(dollarString)
+        rootString.append(centString)
+        
+        return rootString
     }
 }
 
