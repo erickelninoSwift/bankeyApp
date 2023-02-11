@@ -184,7 +184,8 @@ extension AccountSummaryCell
     func configurationCell()
     {
         guard let selectedAccountData = selectedViewmodel else {return}
-        nameLabel.text = selectedAccountData.accountType.description
+        titleLabel.text = selectedAccountData.accountType.rawValue
+        nameLabel.text = selectedAccountData.accountName
         AmountLable.attributedText = makeFormattedBalance(dollars: "\(selectedAccountData.balance)", cents: "00")
         
         switch selectedAccountData.accountType
@@ -192,9 +193,9 @@ extension AccountSummaryCell
         case .Banking:
             underlineView.backgroundColor = appColor
         case .Creditcard:
-            underlineView.backgroundColor = .systemGreen
+            underlineView.backgroundColor = .systemOrange
         case .Investment:
-            underlineView.backgroundColor = .systemRed
+            underlineView.backgroundColor = .systemPurple
         }
     }
 }
