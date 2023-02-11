@@ -13,7 +13,7 @@ private let cellid = "AccountSummaryViewController"
 class AccountSummaryViewController: UIViewController
 {
     
-    let data = ["Erick","Jackpot","Cholo"]
+    var dataAccount = [AccountViewModel]()
     
     private  var tableview: UITableView =
     {
@@ -29,7 +29,7 @@ class AccountSummaryViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        fetchData()
         setupHeaderView()
         style()
         layout()
@@ -74,13 +74,14 @@ extension AccountSummaryViewController
 extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return dataAccount.count
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.AccountSumCellID, for: indexPath) as? AccountSummaryCell else {return UITableViewCell()}
-       
+        let currentAccount  = dataAccount[indexPath.row]
+        cell.selectedViewmodel = currentAccount
         return cell
     }
     
@@ -90,4 +91,36 @@ extension AccountSummaryViewController: UITableViewDelegate, UITableViewDataSour
 
 }
 
+extension AccountSummaryViewController
+{
+    func fetchData()
+    {
+        let savings = AccountViewModel(accountType: .Banking,
+                                                            accountName: "Basic Savings",
+                                                        balance: 929466.23)
+        let chequing = AccountViewModel(accountType: .Banking,
+                                                    accountName: "No-Fee All-In Chequing",
+                                                    balance: 17562.44)
+        let visa = AccountViewModel(accountType: .Creditcard,
+                                                       accountName: "Visa Avion Card",
+                                                       balance: 412.83)
+        let masterCard = AccountViewModel(accountType: .Creditcard,
+                                                       accountName: "Student Mastercard",
+                                                       balance: 50.83)
+        let investment1 = AccountViewModel(accountType: .Investment,
+                                                       accountName: "Tax-Free Saver",
+                                                       balance: 2000.00)
+        let investment2 = AccountViewModel(accountType: .Investment,
+                                                       accountName: "Growth Fund",
+                                                       balance: 15000.00)
+        
+        
+         dataAccount.append(savings)
+         dataAccount.append(chequing)
+         dataAccount.append(visa)
+         dataAccount.append(masterCard)
+         dataAccount.append(investment1)
+         dataAccount.append(investment2)
+    }
+}
 

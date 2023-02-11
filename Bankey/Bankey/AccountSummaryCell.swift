@@ -12,12 +12,21 @@ class AccountSummaryCell : UITableViewCell
 {
     static let AccountSumCellID = "AccountSummaryCellID"
     static let tableviewRowHeight: CGFloat = 120
+
+    var selectedViewmodel: AccountViewModel?
+    {
+        didSet
+        {
+            configurationCell()
+        }
+    }
+    
     
     lazy var titleLabel: UILabel =
         {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Banking"
+            label.text = "Account type"
             label.font = UIFont.boldSystemFont(ofSize: 14)
             label.textColor = .black
             return label
@@ -38,7 +47,7 @@ class AccountSummaryCell : UITableViewCell
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "No-Fee-All-In Chequing"
-            label.font = UIFont.preferredFont(forTextStyle: .caption1)
+            label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
             label.textColor = .black
             return label
     }()
@@ -167,6 +176,26 @@ extension AccountSummaryCell {
         rootString.append(centString)
         
         return rootString
+    }
+}
+
+extension AccountSummaryCell
+{
+    func configurationCell()
+    {
+        guard let selectedAccountData = selectedViewmodel else {return}
+        nameLabel.text = selectedAccountData.accountType.description
+        AmountLable.attributedText = makeFormattedBalance(dollars: "\(selectedAccountData.balance)", cents: "00")
+        
+        switch selectedAccountData.accountType
+        {
+        case .Banking:
+            underlineView.backgroundColor = appColor
+        case .Creditcard:
+            underlineView.backgroundColor = .systemGreen
+        case .Investment:
+            underlineView.backgroundColor = .systemRed
+        }
     }
 }
 
