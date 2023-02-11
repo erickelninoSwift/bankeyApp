@@ -21,6 +21,7 @@ class AccountSummaryViewController: UIViewController
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.AccountSumCellID)
         table.rowHeight = AccountSummaryCell.tableviewRowHeight
+//        table.backgroundColor = appColor
         return table
     }()
     
@@ -46,6 +47,7 @@ extension AccountSummaryViewController
         self.navigationController?.navigationBar.isHidden = true
         view.addSubview(tableview)
         view.backgroundColor = .white
+        tableview.backgroundColor = appColor
     }
     
     

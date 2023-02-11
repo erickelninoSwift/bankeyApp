@@ -33,4 +33,9 @@ struct AccountViewModel
     var accountType: AccountType
     var accountName: String
     var balance: Decimal
+    
+    var BalanceAttributedstring: NSAttributedString
+    {
+        return CurrencyFormatter().makeAttributedCurrency(balance)
+    }
 }

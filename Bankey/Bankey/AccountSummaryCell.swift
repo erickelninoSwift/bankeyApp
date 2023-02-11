@@ -186,7 +186,7 @@ extension AccountSummaryCell
         guard let selectedAccountData = selectedViewmodel else {return}
         titleLabel.text = selectedAccountData.accountType.rawValue
         nameLabel.text = selectedAccountData.accountName
-        AmountLable.attributedText = makeFormattedBalance(dollars: "\(selectedAccountData.balance)", cents: "00")
+        AmountLable.attributedText = selectedAccountData.BalanceAttributedstring
         
         switch selectedAccountData.accountType
         {
