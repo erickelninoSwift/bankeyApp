@@ -24,6 +24,7 @@
 		94C54AC7299338000020213C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C54AC6299338000020213C /* Colors.swift */; };
 		94C54AC9299400D90020213C /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C54AC8299400D90020213C /* AccountSummaryCell.swift */; };
 		94E4A71629971AB000074803 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4A71529971AB000074803 /* AccountViewModel.swift */; };
+		94E4A7192997317D00074803 /* DecimalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4A7182997317D00074803 /* DecimalUtils.swift */; };
 		94E97DAF2961C04F00DECDCE /* MaintabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E97DAE2961C04F00DECDCE /* MaintabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		94C54AC6299338000020213C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		94C54AC8299400D90020213C /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
 		94E4A71529971AB000074803 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		94E4A7182997317D00074803 /* DecimalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalUtils.swift; sourceTree = "<group>"; };
 		94E97DAE2961C04F00DECDCE /* MaintabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 		945C228B295678E4009395AD /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				94E4A7172997316700074803 /* Utils */,
 				94E4A71429971A8C00074803 /* ViewModel */,
 				94C54AC5299337710020213C /* Extensions */,
 				94C54AC029919A390020213C /* Footer */,
@@ -175,6 +178,14 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
+		94E4A7172997316700074803 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				94E4A7182997317D00074803 /* DecimalUtils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E4A7192997317D00074803 /* DecimalUtils.swift in Sources */,
 				945C2291295678E4009395AD /* LoginViewController.swift in Sources */,
 				94C54AC9299400D90020213C /* AccountSummaryCell.swift in Sources */,
 				94C54AC7299338000020213C /* Colors.swift in Sources */,

@@ -32,5 +32,5 @@ struct AccountViewModel
 {
     var accountType: AccountType
     var accountName: String
-    var balance: Float
+    var balance: Decimal
 }
