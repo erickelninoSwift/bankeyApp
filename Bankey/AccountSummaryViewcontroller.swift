@@ -21,10 +21,9 @@ class AccountSummaryViewController: UIViewController
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.AccountSumCellID)
         table.rowHeight = AccountSummaryCell.tableviewRowHeight
-//        table.backgroundColor = appColor
+        
         return table
     }()
-    
     
     
     
@@ -38,6 +37,9 @@ class AccountSummaryViewController: UIViewController
         tableview.dataSource = self
        
     }
+    
+    
+    
 }
 
 extension AccountSummaryViewController
@@ -115,8 +117,6 @@ extension AccountSummaryViewController
         let investment2 = AccountViewModel(accountType: .Investment,
                                                        accountName: "Growth Fund",
                                                        balance: 15000.00)
-        
-        
          dataAccount.append(savings)
          dataAccount.append(chequing)
          dataAccount.append(visa)
