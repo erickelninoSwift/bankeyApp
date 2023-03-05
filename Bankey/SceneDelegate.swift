@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         MyLoginViewcontroller.delegate = self
         controller.delegate = self
         welcomeController.delegate = self
-        
         window?.rootViewController = MyLoginViewcontroller
     }
     
@@ -74,7 +73,7 @@ extension SceneDelegate: LoginViewControllerDelegate
         
         if hasOnboarded
         {
-            setRootviewController(vc: welcomeController)
+            setRootviewController(vc: mainViewController)
             
         }else
         {

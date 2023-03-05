@@ -26,6 +26,13 @@ class AccountSummaryViewController: UIViewController
     }()
     
     
+    lazy var logoutBarbutton: UIBarButtonItem =
+    {
+        let button = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleLogouttapped))
+        button.tintColor = .label
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +53,7 @@ extension AccountSummaryViewController
 {
     private func style()
     {
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         view.addSubview(tableview)
         view.backgroundColor = .white
         tableview.backgroundColor = appColor
@@ -60,6 +67,8 @@ extension AccountSummaryViewController
                                      tableview.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 0),
                                      view.bottomAnchor.constraint(equalToSystemSpacingBelow: tableview.bottomAnchor, multiplier: 0)
         ])
+        
+        self.navigationController?.navigationItem.rightBarButtonItem = logoutBarbutton
     }
     
     private func setupHeaderView()
@@ -71,6 +80,12 @@ extension AccountSummaryViewController
         self.tableview.tableHeaderView = headerView
         self.tableview.tableFooterView = UIView()
         
+    }
+    
+    
+    @objc private func handleLogouttapped()
+    {
+        print("DEBUG: LOGGOUT TAPPED")
     }
 
 }

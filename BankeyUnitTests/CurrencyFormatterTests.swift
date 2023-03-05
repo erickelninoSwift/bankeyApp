@@ -12,21 +12,20 @@ import XCTest
 
 class Test: XCTestCase
 {
-    
-    var formatter: CurrencyFormatter!
+    var formater :CurrencyFormatter!
     
     override func setUp() {
         super.setUp()
-        formatter = CurrencyFormatter()
+        formater = CurrencyFormatter()
     }
     
-    func testDollardFormatted() throws
+    
+    func testConvertoDecimal() throws
     {
-        let local = Locale.current
-        let currencySymbol = local.currencySymbol ?? ""
-
-        let myformat  = formatter.dollarsFormatted(900000.00)
+        let mysample = formater.breakIntoDollarsAndCents(700.90)
         
-        XCTAssertEqual(myformat,"\(currencySymbol)900,000.00")
+        XCTAssertEqual(mysample.0, "700")
+        XCTAssertEqual(mysample.1, "90")
     }
+    
 }
