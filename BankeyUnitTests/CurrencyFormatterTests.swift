@@ -24,9 +24,7 @@ class Test: XCTestCase
     {
         let local = Locale.current
         let currencySymbol = local.currencySymbol ?? ""
-        let calendar = local.calendar
-    
-        
+
         let myformat  = formatter.dollarsFormatted(900000.00)
         
         XCTAssertEqual(myformat,"\(currencySymbol)900,000.00")

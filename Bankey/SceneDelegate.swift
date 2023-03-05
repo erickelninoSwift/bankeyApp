@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         controller.delegate = self
         welcomeController.delegate = self
         
-        window?.rootViewController = mainViewController
+        window?.rootViewController = MyLoginViewcontroller
     }
     
     
@@ -87,7 +87,7 @@ extension SceneDelegate: LoginViewControllerDelegate
 extension SceneDelegate: OnboardingContainerViewControllerDelegate
 {
     func didFinishOnboarding() {
-        setRootviewController(vc: welcomeController)
+        setRootviewController(vc: mainViewController)
         hasOnboarded = true
         UserDefaults.standard.set(hasOnboarded, forKey: "hasOnboarded")
         UserDefaults.standard.synchronize()
