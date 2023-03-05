@@ -15,7 +15,7 @@ class LoginView: UIView
      let stackView = UIStackView()
     
     
-     let divider: UIView =
+     lazy var divider: UIView =
     {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: 1).isActive = true
@@ -37,10 +37,6 @@ class LoginView: UIView
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override var intrinsicContentSize: CGSize
-//    {
-//        return CGSize(width: 200, height: 200)
-//    }
 }
 
 extension LoginView
@@ -61,9 +57,11 @@ extension LoginView
         passwordtextfield.translatesAutoresizingMaskIntoConstraints = false
         passwordtextfield.placeholder = "Password"
         passwordtextfield.delegate = self
+        passwordtextfield.enabletoggle()
         passwordtextfield.textColor = .darkGray
-        passwordtextfield.font = UIFont.systemFont(ofSize: 16)
         passwordtextfield.isSecureTextEntry = true
+        passwordtextfield.font = UIFont.systemFont(ofSize: 16)
+       
         
         divider.translatesAutoresizingMaskIntoConstraints = false
         
