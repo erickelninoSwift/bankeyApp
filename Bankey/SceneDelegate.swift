@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         controller.delegate = self
         welcomeController.delegate = self
         window?.rootViewController = MyLoginViewcontroller
+        registerNotification()
     }
     
     
@@ -120,6 +121,19 @@ extension SceneDelegate
                           options: .transitionCrossDissolve,
                           animations: nil,
                           completion: nil)
+    }
+}
+
+extension SceneDelegate
+{
+    func registerNotification()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(Didlogout), name: .logout, object: nil)
+    }
+    
+    @objc func Didlogout()
+    {
+        setRootviewController(vc: MyLoginViewcontroller)
     }
 }
 

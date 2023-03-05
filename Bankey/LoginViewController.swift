@@ -143,7 +143,7 @@ extension LoginViewController
         {
             configureView(message: "username / password can not be empty")
         }
-        if username == "Erick" && password == "Jackpot"
+        if username == "" && password == ""
         {
            
             activityIndicator.startAnimating()
