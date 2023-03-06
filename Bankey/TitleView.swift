@@ -11,8 +11,14 @@ import UIKit
 class TitleView: UIView
 {
     
+    static let shared = TitleView()
     
     let stackview = UIStackView()
+    
+    
+     var titleLeadingAnchor: NSLayoutConstraint?
+     var titleleadingonScreen: CGFloat = 16
+     var titleleadingOffScreen: CGFloat = -1000
     
     
     private let titlelabel: UILabel =
@@ -66,10 +72,10 @@ extension TitleView
         self.backgroundColor = .white
         
     
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.spacing = 7
-        stackview.distribution = .fillProportionally
+//        stackview.translatesAutoresizingMaskIntoConstraints = false
+//        stackview.axis = .vertical
+//        stackview.spacing = 7
+//        stackview.distribution = .fillProportionally
         
        
         
@@ -77,15 +83,31 @@ extension TitleView
     
     private func layout()
     {
-        stackview.addArrangedSubview(titlelabel)
-        stackview.addArrangedSubview(subtitlelabel)
+//        stackview.addArrangedSubview(titlelabel)
+//        stackview.addArrangedSubview(subtitlelabel)
+//
+//        self.addSubview(stackview)
+//
+//        stackview.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 5).isActive = true
+//        self.trailingAnchor.constraint(equalToSystemSpacingAfter: stackview.trailingAnchor, multiplier: 5).isActive = true
+//        stackview.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        stackview.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
-        self.addSubview(stackview)
-       
-        stackview.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 5).isActive = true
-        self.trailingAnchor.constraint(equalToSystemSpacingAfter: stackview.trailingAnchor, multiplier: 5).isActive = true
-        stackview.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackview.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.addSubview(titlelabel)
+        self.addSubview(subtitlelabel)
+        
+        titleLeadingAnchor = titlelabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: titleleadingOffScreen)
+        titleLeadingAnchor?.isActive = true
+        
+        if titleLeadingAnchor?.constant == titleleadingonScreen
+        {
+            NSLayoutConstraint.activate([titlelabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)])
+        }
+        NSLayoutConstraint.activate([subtitlelabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 2),
+                                     subtitlelabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                                     subtitlelabel.topAnchor.constraint(equalToSystemSpacingBelow: titlelabel.bottomAnchor, multiplier: 1)
+        ])
     }
 }
+
 

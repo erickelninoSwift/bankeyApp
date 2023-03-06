@@ -8,7 +8,8 @@
 
 import UIKit
 
-let passwordButton = UIButton(type: .custom)
+var passwordButton = UIButton(type: .custom)
+
 extension UITextField
 {
     func enabletoggle()
@@ -23,7 +24,7 @@ extension UITextField
     }
     
     
-    @objc func Handlepassowrdview(_ sender: Any)
+    @objc func Handlepassowrdview(_ textfield: UITextField)
     {
         self.isSecureTextEntry.toggle()
         passwordButton.isSelected.toggle()

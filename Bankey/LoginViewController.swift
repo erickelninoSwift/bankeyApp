@@ -69,6 +69,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        animate()
         style()
         layout()
         
@@ -164,6 +165,19 @@ extension LoginViewController
     {
         ErroMessageLabel.isHidden = false
         ErroMessageLabel.text = message
+    }
+}
+
+extension LoginViewController
+{
+    private func animate()
+    {
+        let animator = UIViewPropertyAnimator(duration: 4, curve: .easeInOut) {
+            TitleView.shared.titleLeadingAnchor?.constant = TitleView.shared.titleleadingonScreen
+            self.view.layoutIfNeeded()
+        }
+        
+        animator.startAnimation()
     }
 }
 

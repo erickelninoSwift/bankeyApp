@@ -57,11 +57,11 @@ extension LoginView
         passwordtextfield.translatesAutoresizingMaskIntoConstraints = false
         passwordtextfield.placeholder = "Password"
         passwordtextfield.delegate = self
-        passwordtextfield.enabletoggle()
+        
         passwordtextfield.textColor = .darkGray
         passwordtextfield.isSecureTextEntry = true
         passwordtextfield.font = UIFont.systemFont(ofSize: 16)
-       
+        passwordtextfield.enabletoggle()
         
         divider.translatesAutoresizingMaskIntoConstraints = false
         
